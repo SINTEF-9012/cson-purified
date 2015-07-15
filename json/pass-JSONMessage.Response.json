@@ -1,0 +1,18 @@
+{
+  "JSONResponse": {
+    "timestamp": 1272568502133,
+    "id": "20100429@211502.133/6047ed72:0001",
+    "type": "ping",
+    "responseTo": "1272568502111/69567923:6",
+    "resultCode": 0,
+    "resultText": "Pong",
+    "payload": {
+      "timeDiffSeconds": 0.022,
+      "requestTime": 1272568502110,
+      "pingPayload": {
+        "foo": "hi, world",
+        "bar":[1,2,3]
+      }
+    }
+  }
+}
