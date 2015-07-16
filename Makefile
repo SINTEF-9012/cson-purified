@@ -9,6 +9,9 @@ JSON_PARSER_SRCS = json-parser.c
 JSON_PARSER_OBJS = json-parser.o
 JSON_PARSER_BIN = json-parser
 
+EXAMPLE_SRCS = examples/parse_read_create.c
+EXAMPLE_OBJS = examples/parse_read_create.o
+EXAMPLE_BIN = examples/parse_read_create
 
 STATIC_LIB_LOCATION = libcson.a
 DYNAMIC_LIB_LOCATION = libcson.so
@@ -45,6 +48,9 @@ uninstall:
 	rm -rf $(INSTALL_INCLUDE_DIR)/$(CSON_DIR)
 	rm -rf $(INSTALL_LIB_DIR)/$(STATIC_LIB_LOCATION)
 	rm -rf $(INSTALL_LIB_DIR)/$(DYNAMIC_LIB_LOCATION)
+	
+example: $(EXAMPLE_OBJS)
+	$(GCC) -o $(EXAMPLE_BIN) -pedantic -Wall -Werror -fPIC -g $(EXAMPLE_OBJS) -lcson
 
 clean :
 	rm -rf $(OBJS) $(DYNAMIC_LIB_LOCATION) $(STATIC_LIB_LOCATION) $(TEST_OBJS) $(TEST_BIN) $(JSON_PARSER_OBJS) $(JSON_PARSER_BIN)
