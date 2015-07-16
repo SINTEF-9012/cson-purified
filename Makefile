@@ -13,6 +13,10 @@ JSON_PARSER_BIN = json-parser
 STATIC_LIB_LOCATION = libcson.a
 DYNAMIC_LIB_LOCATION = libcson.so
 
+INSTALL_LIB_DIR = /usr/local/lib
+INSTALL_INCLUDE_DIR = /usr/local/include
+CSON_DIR = cson
+
 #CROSS_COMPILE := /home/vassik/arrowhead/demo2/crossenv/gcc-linaro-arm-linux/bin/arm-linux-gnueabi-
 CROSS_COMPILE :=
 
@@ -29,6 +33,18 @@ staticlib : $(OBJS)
 
 dynamiclib : $(OBJS)
 	$(GCC) -shared -rdynamic -o $(DYNAMIC_LIB_LOCATION) $(OBJS)
+
+install: staticlib dynamiclib
+	install -d $(INSTALL_INCLUDE_DIR)/$(CSON_DIR)
+	install $(STATIC_LIB_LOCATION) $(INSTALL_LIB_DIR)
+	install $(DYNAMIC_LIB_LOCATION) $(INSTALL_LIB_DIR)
+	cp -r ./include/wh/cson/*.h $(INSTALL_INCLUDE_DIR)/$(CSON_DIR)
+	ldconfig
+
+uninstall:
+	rm -rf $(INSTALL_INCLUDE_DIR)/$(CSON_DIR)
+	rm -rf $(INSTALL_LIB_DIR)/$(STATIC_LIB_LOCATION)
+	rm -rf $(INSTALL_LIB_DIR)/$(DYNAMIC_LIB_LOCATION)
 
 clean :
 	rm -rf $(OBJS) $(DYNAMIC_LIB_LOCATION) $(STATIC_LIB_LOCATION) $(TEST_OBJS) $(TEST_BIN) $(JSON_PARSER_OBJS) $(JSON_PARSER_BIN)
