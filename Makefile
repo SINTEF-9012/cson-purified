@@ -53,7 +53,7 @@ example: $(EXAMPLE_OBJS)
 	$(GCC) -o $(EXAMPLE_BIN) -pedantic -Wall -Werror -fPIC -g $(EXAMPLE_OBJS) -lcson
 
 clean :
-	rm -rf $(OBJS) $(DYNAMIC_LIB_LOCATION) $(STATIC_LIB_LOCATION) $(TEST_OBJS) $(TEST_BIN) $(JSON_PARSER_OBJS) $(JSON_PARSER_BIN)
+	rm -rf $(OBJS) $(DYNAMIC_LIB_LOCATION) $(STATIC_LIB_LOCATION) $(TEST_OBJS) $(TEST_BIN) $(JSON_PARSER_OBJS) $(JSON_PARSER_BIN) $(EXAMPLE_OBJS) $(EXAMPLE_BIN)
 
 testbin : $(TEST_OBJS)
 	$(GCC) -o $(TEST_BIN) -pedantic -Wall -Werror -fPIC -g $(TEST_OBJS)
